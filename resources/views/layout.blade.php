@@ -17,7 +17,7 @@
 
 <body>
 
-@include('nav')
+@include('navs')
 <div class="container">
 
 
