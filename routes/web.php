@@ -15,7 +15,7 @@ Route::view('/','home');
 
 // For Contact
 Route::get('contact/create','ContactFormController@create');
-Route::post('contact','ContactFormController@store');
+Route::post('contact','ContactFormController@store')->name('contact.store');
 
 
 // For About

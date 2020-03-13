@@ -4,8 +4,9 @@
 
 @if(! session()->has('message'))
 
-    <form action="{{URL::to('/contact')}}"  method="POST">
+    <form action="{{ route('contact.store') }}" method="POST">
 
+        {{ method_field('POST') }}
         <label for="name">Name : </label>
         <div class="input-group"  class="pb-2">
             <input type="text" name="name" value="{{ old('name')}}  " class="form-control">
