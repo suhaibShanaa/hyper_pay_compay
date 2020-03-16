@@ -18,21 +18,31 @@
                     <a class="nav-link active" href="{{action('HomeController@index')}}">Dashboard</a>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href={{URL::to('customers/index')}} role="button" aria-haspopup="true" aria-expanded="false">Customers</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href={{URL::to('customers/create')}}>Add Customers</a>
-                        <a class="dropdown-item" href={{URL::to('customers/index')}}>Show Customers</a>
-                    </div>
-                </li>
-
+                @role('admin')
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href={{URL::to('company/index')}} role="button" aria-haspopup="true" aria-expanded="false">Companies</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href={{URL::to('company/create')}}>Add Company</a>
+                        @endrole
+                        @role('admin|moderator')
                         <a class="dropdown-item" href={{URL::to('company/index')}}>Show Company</a>
                     </div>
                 </li>
+                @endrole
+
+                @role('admin')
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href={{URL::to('customers/index')}} role="button" aria-haspopup="true" aria-expanded="false">Customers</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href={{URL::to('customers/create')}}>Add Customers</a>
+                        @role('admin|moderator')
+                        <a class="dropdown-item" href={{URL::to('customers/index')}}>Show Customers</a>
+                        @endrole
+
+                    </div>
+                </li>
+                @endrole
+
                 <li class="nav-item active">
                     <a class="nav-link" href="/about">About-Us</a>
                 </li>
@@ -40,7 +50,6 @@
                     <a class="nav-link" href="/contact/create">Contact-Us</a>
                 </li>
             </ul>
-
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->

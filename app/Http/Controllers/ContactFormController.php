@@ -49,7 +49,7 @@ class ContactFormController extends Controller
 
         Mail::to('suhaibsh612@gmail.com')->send(new ContactFormMail($data));
 
-        return redirect('contact')->with('message', 'Thanks for message');
+        return redirect('/contact/create')->with('message', 'Thanks for message');
 
     }
 

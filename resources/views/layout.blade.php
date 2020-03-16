@@ -20,30 +20,14 @@
 @include('navs')
 <div class="container">
 
+    {{--    for message session --}}
+        @if(session()->has('message'))
+            <div class="alert alert-success" role="alert">
+                <strong>Success</strong> {{ session()->get('message') }}
+            </div>
+        @endif
 
-<br><br><br><br>
-
-{{--    for message session --}}
-
-    @if(session()->has('message'))
-
-        <div class="alert alert-success" role="alert">
-            <strong>Success</strong> {{ session()->get('message') }}
-        </div>
-{{--    @else--}}
-{{--        <div class="alert alert-danger" role="alert">--}}
-{{--            <strong>Something Error</strong> {{ session()->get('message') }}--}}
-{{--        </div>--}}
-
-    @endif
-<main class="py-4">
-
-    <div class="container">
         @yield('content')
-    </div>
-
-</main>
-    <br><br>
 </div>
 
 

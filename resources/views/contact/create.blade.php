@@ -1,8 +1,8 @@
 @extends('layout')
 @section('content')
 
-
-@if(! session()->has('message'))
+<h1>Contact-US</h1>
+@if( ! session()->has('message'))
 
     <form action="{{ route('contact.store') }}" method="POST">
 

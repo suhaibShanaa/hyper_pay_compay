@@ -10,16 +10,18 @@
     <h1>Details For {{ $cust->name }} </h1>
     <br>
 {{--        for edit --}}
+
+
         <a href="/customers/{{ $cust->id }}/edit"><button class="btn btn-warning">Edit</button></a>
 
-{{--        for delete--}}
-        <form action="/customers/{{ $cust->id }}" method="POST">
 
-        @method('DELETE')
-        @csrf
+{{--        for delete--}}
+
+        <form action="/customers/{{ $cust->id }}" method="POST">
+            @method('DELETE')
+            @csrf
             <button type="submit" class="btn btn-danger"> Delete</button>
         </form>
-
     </div>
 </div>
 
