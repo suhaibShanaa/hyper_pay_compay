@@ -12,7 +12,7 @@
 
     <div class="row">
         <div class="col-12">
-            <form action={{ URL::to('customers/'.$customer->id) }} method="POST">
+            <form action={{ URL::to('customers/'.$customer->id) }} method="POST" enctype="multipart/form-data">
                 @method('PUT')
                 @include('customers.form')
                 <button type="submit" class="btn btn-success" > Edit Customers</button>

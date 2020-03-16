@@ -11,7 +11,7 @@
 
     <!-- for Add data from DB-->
 
-    <form action={{url('customers/create')}} method="POST"  class="pb-5">
+    <form action={{url('customers/create')}} method="POST"  class="pb-5" enctype="multipart/form-data">
         @include('customers.form')
         <button type="submit" class="btn btn-primary"> Add Customer </button>
     </form>

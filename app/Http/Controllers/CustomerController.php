@@ -65,15 +65,7 @@ class CustomerController extends Controller
         $customer->Company()->attach($request->input('company_s'));
 
 //        //message Mail
-//            event(new NewCustomerHasRegisterdEvent($customer));
-//        Mail::to($customer->email)->send( new WelcomeNewUserMail1());
-//
-//        //Register to News Letter
-//        dump('Register to newsletter');
-//
-//        // Slack notification to Admin
-//        dump('Slack message here ');
-
+        event(new NewCustomerHasRegisterdEvent($customer));
         return redirect('customers/index');
 
     }

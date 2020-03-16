@@ -17,25 +17,25 @@ use Spatie\Permission\Models\Role;
 Route::view('/','home');
 
 //Route::get('/',function (){
-//////    $admin = auth()->user();
-//////    $role = Role::find(1);
-//////    $role =auth()->user()->assignRole('admin' , 'moderator' , 'guest');
-//////    $role->givePermissionTo('Add Customer' ,'Edit Customer' , 'Delete Customer','View Customer');
-////////    $role->syncPermissions(['Add Customer' ,'Edit Customer' , 'Delete Customer','View Customer']);
-//////    dd($admin->can('Add Customer' ,'Edit Customer' , 'Delete Customer','View Customer'));
+////    $admin = auth()->user();
+////    $role = Role::find(1);
+////    $role =auth()->user()->assignRole('admin' , 'moderator' , 'guest');
+////    $role->givePermissionTo('Add Customer' ,'Edit Customer' , 'Delete Customer','View Customer');
+//////    $role->syncPermissions(['Add Customer' ,'Edit Customer' , 'Delete Customer','View Customer']);
+////    dd($admin->can('Add Customer' ,'Edit Customer' , 'Delete Customer','View Customer'));
+//////
 ////////
-//////////
-//////////  dd($admin->hasAnyPermission(['Add Customer' ,'Edit Customer' , 'Delete Customer']));
-////////
+////////  dd($admin->hasAnyPermission(['Add Customer' ,'Edit Customer' , 'Delete Customer']));
+//////
 //    $moderator = auth()->user();
 //    $role = Role::find(2);
 //    $role->givePermissionTo('Edit Customer','View Customer');
 ////    $role->hasPermissionTo('Add Customer' ,'Edit Customer' , 'Delete Customer','View Customer');
+
 //
-////
-////  $guest = auth()->user();
-//// $role = Role::find(3);
-////    $role->givePermissionTo('View Customer');
+//  $guest = auth()->user();
+// $role = Role::find(3);
+//    $role->givePermissionTo('View Customer');
 //});
 
 

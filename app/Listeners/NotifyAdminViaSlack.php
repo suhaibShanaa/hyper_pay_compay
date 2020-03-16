@@ -2,12 +2,20 @@
 
 namespace App\Listeners;
 
-use App\Mail\WelcomeNewUserMail1;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Queue\InteractsWithQueue;
 
-class WelcomeNewCustomerListener implements ShouldQueue
+class NotifyAdminViaSlack
 {
+    /**
+     * Create the event listener.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
 
     /**
      * Handle the event.
@@ -18,8 +26,8 @@ class WelcomeNewCustomerListener implements ShouldQueue
     public function handle($event)
     {
         //
-        sleep(10);
-        Mail::to($event->customer->email)->send( new WelcomeNewUserMail1());
+        dump('Slack message here ');
+
 
     }
 }
