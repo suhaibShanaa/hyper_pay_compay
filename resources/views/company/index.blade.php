@@ -26,7 +26,6 @@
         @foreach($companies as $comp)
             <tr>
                 <th scope="row">{{$comp->id}}</th>
-
                 <td><a href="/company/{{$comp->id}}">  {{$comp->name}} </a></td>
                 <td>
                     @foreach($comp->Customer()->get() as $customer )
@@ -35,15 +34,16 @@
                        </ul>
                     @endforeach
                 </td>
-
             </tr>
         @endforeach
-
         </tbody>
-
-
     </table>
 
 
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center pt-4">
+            {{ $companies->links()}}
+        </div>
+    </div>
 @endsection
 

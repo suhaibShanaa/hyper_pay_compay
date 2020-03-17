@@ -27,7 +27,7 @@ class CustomerController extends Controller
     public function index()
     {
         //
-        $customers = Customer::with('Company')->get();
+        $customers = Customer::with('Company')->paginate(10);
 
         return view('customers.index', ['customers' =>$customers]);
     }

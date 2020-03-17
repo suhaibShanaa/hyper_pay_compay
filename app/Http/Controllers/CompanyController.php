@@ -16,7 +16,7 @@ class CompanyController extends Controller
     public function index()
     {
         //
-        $companies =Company::all();
+        $companies =Company::with('customer')->paginate(10);
 
 
         return view('company.index' , ['companies'=>$companies ]);
@@ -32,9 +32,6 @@ class CompanyController extends Controller
         //
         $companies =Company::all();
         $company = new Company();
-
-
-
         return view('company.create' ,compact('companies' , 'company'));
     }
 
@@ -47,14 +44,11 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         //
-
         $request->input('company');
-
         $company = new Company();
         $company->name =request('name');
 
         $company->save();
-
         return redirect('company/index');
 
     }
