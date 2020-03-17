@@ -33,12 +33,10 @@ class HomeController extends Controller
 //        Role::create(['name'=>'guest']);
 
         //To Create Permisssions
-
 //        Permission::create(['name' => 'Add Customer']);
 //        Permission::create(['name' => 'Edit Customer');
 //        Permission::create(['name' => 'View Customer']);
 //        Permission::create(['name' => 'Delete Customer']);
-//
 //        Permission::create(['name' => 'Add Company']);
 //        Permission::create(['name' => 'Edit Company']);
 //        Permission::create(['name' => 'View Company']);

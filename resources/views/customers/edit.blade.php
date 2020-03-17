@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="row">
-        <h1>Edit Details For {{ $customer->name }} </h1>
+        <h1 class="py-3">Edit Details For {{ $customer->name }} </h1>
     </div>
 
 

@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-12">
 
-            <h1>Customers </h1>
+            <h1 class="py-3">Customers </h1>
             <!-- for Add data from DB-->
             <a href={{URL::to("customers/create")}} ><button class="btn btn-success ">Create</button></a>
         </div>

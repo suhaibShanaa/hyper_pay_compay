@@ -57,9 +57,10 @@ class CustomerController extends Controller
 
         $request->input('company');
         //
-        $customer = new Customer($this->validateRequest());
-        $customer->name = request('name');
-        $customer->email = request('email');
+        $customer = Customer::create($this->validateRequest());
+
+        $this->storeImage($customer);
+
         $customer->save();
         //MUST after Save because Define
         $customer->Company()->attach($request->input('company_s'));
@@ -110,6 +111,7 @@ class CustomerController extends Controller
 
 
         $customer->update($this->validateRequest());
+        $this->storeImage($customer);
 
         $customer->Company()->sync(request()->input('company_s'));
 
@@ -133,10 +135,28 @@ class CustomerController extends Controller
 
     private function validateRequest()
     {
+        return tap(
 
-       return request()->validate([
-            'name' => 'required|min:2',
-            'email' => 'required|email'
-        ]);
+            $validatedDate = request()->validate([
+                'name' => 'required|min:2',
+                'email' => 'required|email',
+
+            ]), function (){
+
+            if (request()->hasFile('image')){
+                request()->validate([
+                    'image'=> 'file|image|max:5000',
+                ]);
+            }
+        });
+    }
+
+    private function storeImage(Customer $customer)
+    {
+        if (request()->has('image')){
+            $customer->update([
+               'image' =>request()->image->store('uploads', 'public'),
+            ]);
+        }
     }
 }

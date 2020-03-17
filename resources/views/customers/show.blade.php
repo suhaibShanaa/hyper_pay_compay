@@ -7,7 +7,7 @@
 <hr>
 <div class="row">
     <div class="col-12">
-    <h1>Details For {{ $cust->name }} </h1>
+    <h1 class="py-3">Details For {{ $cust->name }} </h1>
     <br>
 {{--        for edit --}}
 
@@ -36,13 +36,17 @@
             @foreach($cust->Company()->get() as $company )
                 {{$company->name}}
             @endforeach</p>
+
+        @if($cust->image)
+            <div class="row">
+                <div class="col-12"><img src="{{ asset('storage/'. $cust->image) }}" alt="" class="img-thumbnail">
+                </div>
+            </div>
+        @endif
         @endforeach
-{{--        <p><strong>Company</strong>  {{$customeromer->company->name}}</p>--}}
-
-
-
-
     </div>
 </div>
+
+
 
 @endsection
