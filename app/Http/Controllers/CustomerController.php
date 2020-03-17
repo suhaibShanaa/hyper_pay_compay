@@ -9,6 +9,7 @@ use App\Mail\WelcomeNewUserMail;
 use App\Mail\WelcomeNewUserMail1;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Intervention\Image\Image;
 
 class CustomerController extends Controller
 {
@@ -135,20 +136,13 @@ class CustomerController extends Controller
 
     private function validateRequest()
     {
-        return tap(
-
-            $validatedDate = request()->validate([
+                return request()->validate([
                 'name' => 'required|min:2',
                 'email' => 'required|email',
-
-            ]), function (){
-
-            if (request()->hasFile('image')){
-                request()->validate([
-                    'image'=> 'file|image|max:5000',
+                'image'=> 'sometimes|file|image|max:5000',
                 ]);
-            }
-        });
+
+
     }
 
     private function storeImage(Customer $customer)
@@ -157,6 +151,9 @@ class CustomerController extends Controller
             $customer->update([
                'image' =>request()->image->store('uploads', 'public'),
             ]);
+
+            $image =\Intervention\Image\Facades\Image::make(public_path('storage/' . $customer->image))->fit(300,300 , null , 'center');
+            $image->save();
         }
     }
 }

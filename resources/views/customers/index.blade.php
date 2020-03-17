@@ -17,6 +17,7 @@
         <thead>
         <tr>
             <th scope="col">ID</th>
+            <th scope="col">Profile</th>
             <th scope="col">Customer Name</th>
             <th scope="col">Company Name</th>
             <th scope="col">Email</th>
@@ -28,6 +29,14 @@
             <tr>
                 <th scope="row">{{$cust->id}}</th>
 
+                <td> @if($cust->image)
+                        <div class="row">
+                            <div class="col-sm-2"><img src="{{ asset('storage/'. $cust->image) }}" alt="" class="img-thumbnail">
+                            </div>
+                        </div>
+                    @endif
+                </td>
+
                 <td>
                                     <a href="/customers/{{$cust->id}}">  {{$cust->name}} </a>
                                     <td>
@@ -38,6 +47,8 @@
 
 
                 <td>{{ $cust->email }} </td>
+
+
         </tr>
         @endforeach
         </tbody>
