@@ -18,30 +18,24 @@
                     <a class="nav-link active" href="{{action('HomeController@index')}}">Dashboard</a>
                 </li>
 
-                @role('admin')
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href={{URL::to('company/index')}} role="button" aria-haspopup="true" aria-expanded="false">Companies</a>
                     <div class="dropdown-menu">
+                        @can('create', App\Company::class)
                         <a class="dropdown-item" href={{URL::to('company/create')}}>Add Company</a>
-                        @endrole
-                        @role('admin|moderator')
+                        @endcan
                         <a class="dropdown-item" href={{URL::to('company/index')}}>Show Company</a>
                     </div>
                 </li>
-                @endrole
-
-                @role('admin')
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href={{URL::to('customers/index')}} role="button" aria-haspopup="true" aria-expanded="false">Customers</a>
                     <div class="dropdown-menu">
+                        @can('create', App\Customer::class)
                         <a class="dropdown-item" href={{URL::to('customers/create')}}>Add Customers</a>
-                        @role('admin|moderator')
+                        @endcan
                         <a class="dropdown-item" href={{URL::to('customers/index')}}>Show Customers</a>
-                        @endrole
-
                     </div>
                 </li>
-                @endrole
 
                 <li class="nav-item active">
                     <a class="nav-link" href="/about">About-Us</a>

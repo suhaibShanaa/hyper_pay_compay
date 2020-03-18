@@ -55,14 +55,14 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
 
+        $this->authorize('create' , Customer::class);
+//        $this->authorize('create', [Customer::class, Auth::user()]);
 
         $request->input('company');
-        //
         $customer = Customer::create($this->validateRequest());
-
         $this->storeImage($customer);
-
         $customer->save();
+
         //MUST after Save because Define
         $customer->Company()->attach($request->input('company_s'));
 
@@ -129,6 +129,8 @@ class CustomerController extends Controller
     public function destroy(Customer $customer)
     {
         //
+        $this->authorize('delete',$customer);
+
         $customer->delete();
         return  redirect('customers/index');
 

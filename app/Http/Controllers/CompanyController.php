@@ -17,8 +17,6 @@ class CompanyController extends Controller
     {
         //
         $companies =Company::with('customer')->paginate(10);
-
-
         return view('company.index' , ['companies'=>$companies ]);
     }
 
@@ -30,6 +28,8 @@ class CompanyController extends Controller
     public function create()
     {
         //
+
+
         $companies =Company::all();
         $company = new Company();
         return view('company.create' ,compact('companies' , 'company'));
@@ -44,6 +44,9 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         //
+        $this->authorize('create' , Company::class);
+
+
         $request->input('company');
         $company = new Company();
         $company->name =request('name');
@@ -61,9 +64,8 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        //
-        $compans = Company::find($company);
 
+        $compans = Company::find($company);
         return view('company.show' , compact('compans'));
     }
 
@@ -75,7 +77,6 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        //
 
         return view('company.edit' ,compact('company' ));
     }
@@ -107,8 +108,8 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
-//        dd($company);
+
+        $this->authorize('delete',$company);
         $company->delete();
         return  redirect('company/index');
 
