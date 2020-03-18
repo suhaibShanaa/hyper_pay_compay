@@ -79,6 +79,17 @@ Route::get('phone' , function (){
 
 });
 
+Route::get('post' , function (){
+
+    $user = factory(\App\User::class)->create();
+
+    $user->post()->create([
+       'title'  => 'Title Here',
+       'body'   => 'Vdsfvdsvsdfcsd dasfdsdfvs sfsdf ',
+    ]);
+    dd($user->post);
+});
+
 
 Auth::routes();
 

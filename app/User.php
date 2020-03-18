@@ -42,4 +42,9 @@ class User extends Authenticatable
         return $this->hasOne(Phone::class);
 
     }
+
+    public function post(){
+        return $this->hasMany(Post::class);
+
+    }
 }
