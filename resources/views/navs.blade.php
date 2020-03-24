@@ -43,6 +43,10 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/contact/create">Contact-Us</a>
                 </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href={{URL::to('product/index')}}>Products</a>
+                </li>
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">

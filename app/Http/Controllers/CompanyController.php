@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use App\Customer;
+use App\Product;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -16,8 +17,9 @@ class CompanyController extends Controller
     public function index()
     {
         //
+        $products = Product::all();
         $companies =Company::with('customer')->paginate(10);
-        return view('company.index' , ['companies'=>$companies ]);
+        return view('company.index' ,compact('companies','products'));
     }
 
     /**
@@ -28,7 +30,6 @@ class CompanyController extends Controller
     public function create()
     {
         //
-
 
         $companies =Company::all();
         $company = new Company();

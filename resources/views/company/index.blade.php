@@ -21,6 +21,7 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Company Name</th>
+            <th scope="col">Customer Related</th>
         </tr>
         </thead>
 

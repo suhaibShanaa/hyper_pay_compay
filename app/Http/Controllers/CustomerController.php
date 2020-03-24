@@ -55,7 +55,7 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
 
-        $this->authorize('create' , Customer::class);
+//        $this->authorize('create' , Customer::class);
 //        $this->authorize('create', [Customer::class, Auth::user()]);
 
         $request->input('company');
@@ -129,7 +129,7 @@ class CustomerController extends Controller
     public function destroy(Customer $customer)
     {
         //
-        $this->authorize('delete',$customer);
+//        $this->authorize('delete',$customer);
 
         $customer->delete();
         return  redirect('customers/index');
