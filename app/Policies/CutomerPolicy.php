@@ -31,7 +31,7 @@ class CutomerPolicy
     public function view(User $user, Customer $customer)
     {
         return in_array($user->email,[
-            'suhaibAdmin@admin',
+            'suhaibsh612@gmail.com',
             'Moderator@user',
         ]);
     }
@@ -45,7 +45,7 @@ class CutomerPolicy
     public function create(User $user)
     {
         return in_array($user->email,[
-            'suhaibAdmin@admin'
+            'suhaibsh612@gmail.com'
         ]);
     }
 
@@ -59,7 +59,7 @@ class CutomerPolicy
     public function update(User $user, Customer $customer)
     {
         return in_array($user->email,[
-            'suhaibAdmin@admin',
+            'suhaibsh612@gmail.com',
             'Moderator@user',
         ]);
     }
@@ -74,7 +74,7 @@ class CutomerPolicy
     public function delete(User $user, Customer $customer)
     {
         return in_array($user->email,[
-            'suhaibAdmin@admin',
+            'suhaibsh612@gmail.com',
         ]);
     }
 

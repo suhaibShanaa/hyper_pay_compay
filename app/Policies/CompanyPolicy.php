@@ -32,7 +32,7 @@ class CompanyPolicy
     {
         //
         return in_array($user->email,[
-            'suhaibAdmin@admin',
+            'suhaibsh612@gmail.com',
             'Moderator@user',
         ]);
     }
@@ -46,7 +46,7 @@ class CompanyPolicy
     public function create(User $user)
     {
         return in_array($user->email,[
-            'suhaibAdmin@admin'
+            'suhaibsh612@gmail.com'
         ]);
     }
 
@@ -60,7 +60,7 @@ class CompanyPolicy
     public function update(User $user, Company $company)
     {
         return in_array($user->email,[
-            'suhaibAdmin@admin',
+            'suhaibsh612@gmail.com',
             'Moderator@user',
         ]);
     }
@@ -76,7 +76,7 @@ class CompanyPolicy
     {
         //
         return in_array($user->email,[
-            'suhaibAdmin@admin'
+            'suhaibsh612@gmail.com'
         ]);
     }
 

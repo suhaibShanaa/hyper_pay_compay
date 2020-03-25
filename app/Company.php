@@ -12,7 +12,7 @@ class Company extends Model
     public function Customer(){
         return $this->belongsToMany(Customer::class,'customers_companies')->withTimestamps();
     }
-    public function Product(){
-        return $this->hasMany(Product::class,'company_id','id');
-    }
+//    public function Product(){
+//        return $this->hasMany(Product::class,'company_id','id');
+//    }
 }

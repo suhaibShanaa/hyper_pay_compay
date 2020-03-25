@@ -7,6 +7,7 @@ use App\Customer;
 use App\Events\NewCustomerHasRegisterdEvent;
 use App\Mail\WelcomeNewUserMail;
 use App\Mail\WelcomeNewUserMail1;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Intervention\Image\Image;
@@ -27,7 +28,7 @@ class CustomerController extends Controller
     public function index()
     {
         //
-        $customers = Customer::with('Company')->paginate(10);
+        $customers = Customer::with('Company','Product')->paginate(10);
 
         return view('customers.index', ['customers' =>$customers]);
     }
@@ -40,10 +41,11 @@ class CustomerController extends Controller
     public function create()
     {
         //
-        $companies =Company::all();
-        $customer = new Customer();
+        $companies  =   Company::all();
+        $products   =   Product::all();
+        $customer   =   new Customer();
 
-        return view('customers.create' , compact('companies','customer'));
+        return view('customers.create' , compact('companies','customer','products'));
     }
 
     /**
@@ -59,12 +61,14 @@ class CustomerController extends Controller
 //        $this->authorize('create', [Customer::class, Auth::user()]);
 
         $request->input('company');
+        $request->input('product');
         $customer = Customer::create($this->validateRequest());
         $this->storeImage($customer);
         $customer->save();
 
         //MUST after Save because Define
         $customer->Company()->attach($request->input('company_s'));
+        $customer->Product()->attach($request->input('product_s'));
 
 //        //message Mail
         event(new NewCustomerHasRegisterdEvent($customer));
@@ -95,9 +99,10 @@ class CustomerController extends Controller
     public function edit(Customer $customer)
     {
         //
-        $companies =Company::all();
+        $companies =    Company::all();
+        $products  =    Product::all();
 
-        return view('customers.edit' ,compact('customer' ,'companies' ));
+        return view('customers.edit' ,compact('customer' ,'companies' ,'products'));
     }
 
     /**
@@ -115,6 +120,7 @@ class CustomerController extends Controller
         $this->storeImage($customer);
 
         $customer->Company()->sync(request()->input('company_s'));
+        $customer->Product()->sync(request()->input('product_s'));
 
         return redirect('customers/'.$customer->id);
 

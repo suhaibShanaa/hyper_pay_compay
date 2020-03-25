@@ -18,6 +18,7 @@
         <thead>
         <tr>
             <th scope="col">ID</th>
+            <th scope="col">Product Name</th>
             <th scope="col">Category</th>
             <th scope="col">Image</th>
         </tr>
@@ -27,7 +28,7 @@
         @foreach($products as $prodc)
             <tr>
                 <th scope="row">{{$prodc->id}}</th>
-
+                <td><a href="/product/{{$prodc->id}}">  {{$prodc->name}} </a></td>
                 <td>{{ $prodc->category }} </td>
 
                 <td> @if($prodc->image)

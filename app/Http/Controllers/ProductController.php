@@ -41,9 +41,9 @@ class ProductController extends Controller
     {
         //
 
-        $companies = Company::all();
+        $products = Product::all();
         $prod = new Product();
-        return view('product.create', compact('companies','prod'));
+        return view('product.create', compact('products','prod'));
 
     }
 
@@ -61,9 +61,8 @@ class ProductController extends Controller
         $this->storeImage($product);
         $product->save();
 
-        $product->Company()->attach($request->input('product'));
 
-        return redirect('company/index');
+        return redirect('product/index');
 
 
 
@@ -79,8 +78,8 @@ class ProductController extends Controller
     {
         //
         $products = Product::find($products);
-
         return view('product.show', compact('products'));
+
     }
 
     /**

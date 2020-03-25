@@ -22,6 +22,17 @@
     </select>
 </div>
 
+
+<label for="product_id">Product : </label>
+<div class="form-group" >
+    <select name="product_s[]"   id="product_id"  class="form-control" multiple>
+        <option value="" disabled>Select Product</option>
+        @foreach( $products as $prod)
+            <option value={{$prod->id}}>{{$prod->name}} {{$prod->image}}</option>
+        @endforeach
+    </select>
+</div>
+
 <label for="image">Profile Image : </label>
 <div class="form-group d-flex flex-column">
     <input type="file" name="image" class="py-3">
