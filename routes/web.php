@@ -48,6 +48,10 @@ Route::put('product/{product}' ,'ProductController@update')->middleware('auth')-
 Route::delete('product/{product}' ,'ProductController@destroy')->middleware('auth')->name('product.destroy');
 
 
+//For Pay
+Route::get( '/pay' , 'PaymentController@index');
+Route::get( '/status' , 'PaymentController@status' );
+
 // For Contact
 Route::get('contact/create','ContactFormController@create')->middleware('auth');
 Route::post('contact','ContactFormController@store')->name('contact.store')->middleware('auth');

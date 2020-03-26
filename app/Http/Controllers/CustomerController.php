@@ -9,6 +9,7 @@ use App\Mail\WelcomeNewUserMail;
 use App\Mail\WelcomeNewUserMail1;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Intervention\Image\Image;
 
@@ -164,4 +165,6 @@ class CustomerController extends Controller
             $image->save();
         }
     }
+
+
 }

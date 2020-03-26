@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class
 Customer extends Model
 {
+
+    protected $table = 'payment';
+
     public function Company(){
         return $this->belongsToMany(Company::class,'customers_companies')->withTimestamps();
 
