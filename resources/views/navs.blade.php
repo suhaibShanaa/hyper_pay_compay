@@ -16,7 +16,7 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href={{URL::to('company/index')}} role="button" aria-haspopup="true" aria-expanded="false">Companies</a>
+                    <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href={{URL::to('company/index')}} role="button" aria-haspopup="true" aria-expanded="false">Companies</a>
                     <div class="dropdown-menu">
                         @can('create', App\Company::class)
                         <a class="dropdown-item" href={{URL::to('company/create')}}>Add Company</a>
@@ -25,7 +25,7 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href={{URL::to('customers/index')}} role="button" aria-haspopup="true" aria-expanded="false">Customers</a>
+                    <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href={{URL::to('customers/index')}} role="button" aria-haspopup="true" aria-expanded="false">Customers</a>
                     <div class="dropdown-menu">
                         @can('create', App\Customer::class)
                         <a class="dropdown-item" href={{URL::to('customers/create')}}>Add Customers</a>
@@ -34,7 +34,7 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href={{URL::to('product/index')}} role="button" aria-haspopup="true" aria-expanded="false">Products</a>
+                    <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href={{URL::to('product/index')}} role="button" aria-haspopup="true" aria-expanded="false">Products</a>
                     <div class="dropdown-menu">
                         @can('create', App\Product::class)
                             <a class="dropdown-item" href={{URL::to('product/create')}}>Add Product</a>

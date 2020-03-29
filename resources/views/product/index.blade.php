@@ -40,7 +40,7 @@
                     <table class="table table-hover mb-0">
 
                         <!--Table head-->
-                        <thead>
+                        <thead class="table-primary">
                         <tr>
 
                             <th class="th-lg">
