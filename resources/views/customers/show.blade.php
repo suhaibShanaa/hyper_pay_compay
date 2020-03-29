@@ -4,31 +4,13 @@
 @section('title' ,'Details For' . $cust->name)
 
 @section('content')
-<hr>
+
 <div class="row">
     <div class="col-12">
-    <h1 class="py-3">Details For {{ $cust->name }} </h1>
-    <br>
-{{--        for edit --}}
-
-
-        <a href="/customers/{{ $cust->id }}/edit"><button class="btn btn-warning">Edit</button></a>
-
-
-{{--        for delete--}}
-
-        <form action="/customers/{{ $cust->id }}" method="POST">
-            @method('DELETE')
-            @csrf
-            <button type="submit" class="btn btn-danger"> Delete</button>
-        </form>
-    </div>
-</div>
-
-
-
-<div class="row">
-    <div class="col-2">
+            <div class="card  bg-light mb-3" style="max-width: 70rem;">
+                <div class="card-header">Details For {{ $cust->name }}<br>
+                </div>
+                <div class="card-body">
 
         <p><strong>Name</strong>  {{$cust->name}}</p>
         <p><strong>Email</strong>  {{$cust->email}}</p>
@@ -37,14 +19,6 @@
                 {{$company->name}}
             @endforeach
         </p>
-{{--        <div> product ---}}
-{{--            @foreach( $products->Product()->get() as $prod)--}}
-{{--                <div value={{$prod->id}}>{{$prod->name}} --  @if($prod->image)--}}
-{{--                        <div class="col-sm-2"><img src="{{ asset('storage/'. $prod->image) }}" alt="" class="img-thumbnail">--}}
-{{--                        </div>--}}
-{{--                    @endif</div>--}}
-{{--            @endforeach--}}
-{{--        </div>--}}
 
         @if($cust->image)
             <div class="row">
@@ -53,6 +27,16 @@
             </div>
         @endif
         @endforeach
+
+                    <a href="/customers/{{ $cust->id }}/edit"><button class="btn btn-warning">Edit</button></a>
+                    <form action="/customers/{{ $cust->id }}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="btn btn-danger"> Delete</button>
+                    </form>
+
+                </div>
+            </div>
     </div>
 </div>
 @endsection

@@ -29,7 +29,7 @@ class CutomerPolicy
      * @param  \App\Customer  $customer
      * @return mixed
      */
-    public function view(User $user, Customer $customer)
+    public function view(User $user)
     {
         return in_array($user->email,[
             'suhaibsh612@gmail.com',
@@ -57,7 +57,7 @@ class CutomerPolicy
      * @param  \App\Customer  $customer
      * @return mixed
      */
-    public function update(User $user, Customer $customer)
+    public function update(User $user)
     {
         return in_array($user->email,[
             'suhaibsh612@gmail.com',
@@ -72,7 +72,7 @@ class CutomerPolicy
      * @param  \App\Customer  $customer
      * @return mixed
      */
-    public function delete(User $user, Customer $customer)
+    public function delete(User $user)
     {
         return in_array($user->email,[
             'suhaibsh612@gmail.com',

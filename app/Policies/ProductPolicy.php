@@ -28,7 +28,7 @@ class ProductPolicy
      * @param  \App\Product  $product
      * @return mixed
      */
-    public function view(User $user, Product $product)
+    public function view(User $user)
     {
         //
         return in_array($user->email,[
@@ -58,7 +58,7 @@ class ProductPolicy
      * @param  \App\Product  $product
      * @return mixed
      */
-    public function update(User $user, Product $product)
+    public function update(User $user)
     {
         //
         return in_array($user->email,[
@@ -74,7 +74,7 @@ class ProductPolicy
      * @param  \App\Product  $product
      * @return mixed
      */
-    public function delete(User $user, Product $product)
+    public function delete(User $user)
     {
         //
         return in_array($user->email,[

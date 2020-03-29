@@ -28,7 +28,7 @@ class CompanyPolicy
      * @param  \App\Company  $company
      * @return mixed
      */
-    public function view(User $user, Company $company)
+    public function view(User $user)
     {
         //
         return in_array($user->email,[
@@ -57,7 +57,7 @@ class CompanyPolicy
      * @param  \App\Company  $company
      * @return mixed
      */
-    public function update(User $user, Company $company)
+    public function update(User $user)
     {
         return in_array($user->email,[
             'suhaibsh612@gmail.com',
@@ -72,7 +72,7 @@ class CompanyPolicy
      * @param  \App\Company  $company
      * @return mixed
      */
-    public function delete(User $user, Company $company)
+    public function delete(User $user)
     {
         //
         return in_array($user->email,[

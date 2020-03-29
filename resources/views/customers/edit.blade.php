@@ -4,18 +4,19 @@
 
 @section('content')
 
-    <div class="row">
-        <h1 class="py-3">Edit Details For {{ $customer->name }} </h1>
-    </div>
+    <div class="container">
+        <div class="card text-white  bg-info mb-3" style="max-width: 70rem;">
 
+            <div class="row">
+                <div class="col-12">
+                    <div class="card-body">
 
+        <h1 class="card-title">Edit Details For {{ $customer->name }} </h1>
 
-    <div class="row">
-        <div class="col-12">
             <form action={{ URL::to('customers/'.$customer->id) }} method="POST" enctype="multipart/form-data">
                 @method('PUT')
                 @include('customers.form')
-                <button type="submit" class="btn btn-success" > Edit Customers</button>
+                <button type="submit" class="btn btn-light" > Edit Customers</button>
             </form>
         </div>
     </div>

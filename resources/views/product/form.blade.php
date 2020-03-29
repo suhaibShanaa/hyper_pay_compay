@@ -1,3 +1,4 @@
+
 <label for="name">Name : </label>
 <div class="input-group"  class="pb-2">
     <input type="text" name="name" value="{{ old('name') ?? $prod->name }}  " class="form-control">
