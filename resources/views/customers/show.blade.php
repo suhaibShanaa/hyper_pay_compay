@@ -35,7 +35,16 @@
         <p><strong>Company</strong> <br>
             @foreach($cust->Company()->get() as $company )
                 {{$company->name}}
-            @endforeach</p>
+            @endforeach
+        </p>
+{{--        <div> product ---}}
+{{--            @foreach( $products->Product()->get() as $prod)--}}
+{{--                <div value={{$prod->id}}>{{$prod->name}} --  @if($prod->image)--}}
+{{--                        <div class="col-sm-2"><img src="{{ asset('storage/'. $prod->image) }}" alt="" class="img-thumbnail">--}}
+{{--                        </div>--}}
+{{--                    @endif</div>--}}
+{{--            @endforeach--}}
+{{--        </div>--}}
 
         @if($cust->image)
             <div class="row">

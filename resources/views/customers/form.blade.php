@@ -25,12 +25,15 @@
 
 <label for="product_id">Product : </label>
 <div class="form-group" >
-    <select name="product_s[]"   id="product_id"  class="form-control" multiple>
-        <option value="" disabled>Select Product</option>
-        @foreach( $products as $prod)
-            <option value={{$prod->id}}>{{$prod->name}} {{$prod->image}}</option>
-        @endforeach
-    </select>
+{{--    <select name="product_s[]"   id="product_id"  class="form-control" multiple>--}}
+{{--        <option value="" disabled>Select Product</option>--}}
+{{--        @foreach( $products->Product()->get() as  $prod)--}}
+{{--            <option value={{$prod->id}}>{{$prod->name}} --  @if($prod->image)--}}
+{{--                    <div class="col-sm-2"><img src="{{ asset('storage/'. $prod->image) }}" alt="" class="img-thumbnail">--}}
+{{--                    </div>--}}
+{{--                @endif</option>--}}
+{{--        @endforeach--}}
+{{--    </select>--}}
 </div>
 
 <label for="image">Profile Image : </label>

@@ -27,7 +27,8 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $products = Product::all();
+//        $products = Product::all();
+        $products= Product::orderBy('created_at','desc')->get();
 
         return view('product.index', ['products' => $products]);
     }
@@ -55,6 +56,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create' , Product::class);
 
         $request->input('product');
         $product = Product::create($this->validateRequest());
@@ -77,6 +79,7 @@ class ProductController extends Controller
     public function show(Product $products)
     {
         //
+
         $products = Product::find($products);
         return view('product.show', compact('products'));
 
@@ -105,6 +108,7 @@ class ProductController extends Controller
     public function update(Product $products)
     {
 
+        $this->authorize('update' , Product::class);
 
         $products->update($this->validateRequest());
         $this->storeImage($products);
@@ -124,7 +128,7 @@ class ProductController extends Controller
     public function destroy(Product $products)
     {
         //
-//        $this->authorize('delete', $products);
+        $this->authorize('delete' , Product::class);
 
         $products->delete();
         return redirect('product/index');

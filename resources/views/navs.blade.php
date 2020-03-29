@@ -36,7 +36,15 @@
                         <a class="dropdown-item" href={{URL::to('customers/index')}}>Show Customers</a>
                     </div>
                 </li>
-
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href={{URL::to('product/index')}} role="button" aria-haspopup="true" aria-expanded="false">Products</a>
+                    <div class="dropdown-menu">
+                        @can('create', App\Product::class)
+                            <a class="dropdown-item" href={{URL::to('product/create')}}>Add Product</a>
+                        @endcan
+                        <a class="dropdown-item" href={{URL::to('product/index')}}>Show Product</a>
+                    </div>
+                </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/about">About-Us</a>
                 </li>
@@ -44,9 +52,6 @@
                     <a class="nav-link" href="/contact/create">Contact-Us</a>
                 </li>
 
-                <li class="nav-item active">
-                    <a class="nav-link" href={{URL::to('product/index')}}>Products</a>
-                </li>
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">

@@ -14,10 +14,16 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index']); //to skip index
+    }
+
     public function index()
     {
         //
         $products = Product::all();
+        $companies= Company::orderBy('created_at','desc')->get();
         $companies =Company::with('customer')->paginate(10);
         return view('company.index' ,compact('companies','products'));
     }
@@ -92,9 +98,8 @@ class CompanyController extends Controller
     public function update(Company $company)
     {
         //
-//        dd(request()->post('name'));
+        $this->authorize('update' , Company::class);
 
-//        $company->update(['name'=>request()->post('name')]);
         $company->update(request()->post());
 //
         return redirect('company/'.$company->id);

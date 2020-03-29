@@ -2,16 +2,16 @@
 
 namespace App\Policies;
 
-use App\Customer;
+use App\Product;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CutomerPolicy
+class ProductPolicy
 {
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view any customers.
+     * Determine whether the user can view any products.
      *
      * @param  \App\User  $user
      * @return mixed
@@ -19,18 +19,18 @@ class CutomerPolicy
     public function viewAny(User $user)
     {
         //
-
     }
 
     /**
-     * Determine whether the user can view the customer.
+     * Determine whether the user can view the product.
      *
      * @param  \App\User  $user
-     * @param  \App\Customer  $customer
+     * @param  \App\Product  $product
      * @return mixed
      */
-    public function view(User $user, Customer $customer)
+    public function view(User $user, Product $product)
     {
+        //
         return in_array($user->email,[
             'suhaibsh612@gmail.com',
             'Moderator@user',
@@ -38,27 +38,29 @@ class CutomerPolicy
     }
 
     /**
-     * Determine whether the user can create customers.
+     * Determine whether the user can create products.
      *
      * @param  \App\User  $user
      * @return mixed
      */
     public function create(User $user)
     {
+        //
         return in_array($user->email,[
-            'suhaibsh612@gmail.com'
+            'suhaibsh612@gmail.com',
         ]);
     }
 
     /**
-     * Determine whether the user can update the customer.
+     * Determine whether the user can update the product.
      *
      * @param  \App\User  $user
-     * @param  \App\Customer  $customer
+     * @param  \App\Product  $product
      * @return mixed
      */
-    public function update(User $user, Customer $customer)
+    public function update(User $user, Product $product)
     {
+        //
         return in_array($user->email,[
             'suhaibsh612@gmail.com',
             'Moderator@user',
@@ -66,39 +68,40 @@ class CutomerPolicy
     }
 
     /**
-     * Determine whether the user can delete the customer.
+     * Determine whether the user can delete the product.
      *
      * @param  \App\User  $user
-     * @param  \App\Customer  $customer
+     * @param  \App\Product  $product
      * @return mixed
      */
-    public function delete(User $user, Customer $customer)
+    public function delete(User $user, Product $product)
     {
+        //
         return in_array($user->email,[
             'suhaibsh612@gmail.com',
         ]);
     }
 
     /**
-     * Determine whether the user can restore the customer.
+     * Determine whether the user can restore the product.
      *
      * @param  \App\User  $user
-     * @param  \App\Customer  $customer
+     * @param  \App\Product  $product
      * @return mixed
      */
-    public function restore(User $user, Customer $customer)
+    public function restore(User $user, Product $product)
     {
         //
     }
 
     /**
-     * Determine whether the user can permanently delete the customer.
+     * Determine whether the user can permanently delete the product.
      *
      * @param  \App\User  $user
-     * @param  \App\Customer  $customer
+     * @param  \App\Product  $product
      * @return mixed
      */
-    public function forceDelete(User $user, Customer $customer)
+    public function forceDelete(User $user, Product $product)
     {
         //
     }

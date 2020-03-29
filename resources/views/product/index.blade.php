@@ -4,14 +4,14 @@
 @section('content')
     <h1 class="py-3">Products </h1>
 
-{{--    @can( 'create' , App\Product::class)--}}
+    @can( 'create' , App\Product::class)
         <div class="row">
             <div class="col-12">
                 <!-- for Add data from DB-->
                 <a href={{URL::to("product/create")}} ><button class="btn btn-success ">Create</button></a>
             </div>
         </div>
-{{--        @endcan--}}
+        @endcan
     <br>
     <table class="table">
 
@@ -28,7 +28,15 @@
         @foreach($products as $prodc)
             <tr>
                 <th scope="row">{{$prodc->id}}</th>
-                <td><a href="/product/{{$prodc->id}}">  {{$prodc->name}} </a></td>
+                <td>
+                    @can('view', $prodc)
+                        <a href="/product/{{$prodc->id}}">  {{$prodc->name}} </a>
+                    @endcan
+                    @cannot('view' , $prodc)
+                        {{$prodc->name}}
+                    @endcannot
+                </td>
+
                 <td>{{ $prodc->category }} </td>
 
                 <td> @if($prodc->image)

@@ -4,14 +4,14 @@
 @section('content')
     <h1 class="py-3">Customers </h1>
 
-{{--    @can( 'create' , App\Customer::class)--}}
+    @can( 'create' , App\Customer::class)
         <div class="row">
             <div class="col-12">
                 <!-- for Add data from DB-->
                 <a href={{URL::to("customers/create")}} ><button class="btn btn-success ">Create</button></a>
             </div>
         </div>
-{{--        @endcan--}}
+        @endcan
     <br>
     <table class="table">
 
@@ -38,13 +38,13 @@
                 </td>
 
                 <td>
-{{--                    @can('view', $cust)--}}
+                    @can('view', $cust)
                         <a href="/customers/{{$cust->id}}">  {{$cust->name}} </a>
-{{--                    @endcan--}}
+                    @endcan
 
-{{--                    @cannot('view' , $cust)--}}
-{{--                            {{$cust->name}}--}}
-{{--                    @endcannot--}}
+                    @cannot('view' , $cust)
+                            {{$cust->name}}
+                    @endcannot
                 </td>
                 <td>
                                         @foreach($cust->Company()->get() as $company )
