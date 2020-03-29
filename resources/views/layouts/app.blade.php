@@ -19,15 +19,25 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <!-- Title  -->
+    <title>@yield('title','First Project')</title>
+
 </head>
+
 <body>
 
-    <div id="app">
-        @include('navs')
+@include('navs')
+<div class="container">
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+    {{--    for message session --}}
+    @if(session()->has('message'))
+        <div class="alert alert-success" role="alert">
+            <strong>Success</strong> {{ session()->get('message') }}
+        </div>
+    @endif
+
+    @yield('content')
+</div>
+
 </body>
 </html>

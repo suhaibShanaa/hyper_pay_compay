@@ -1,4 +1,5 @@
-@extends('layout')
+@extends('layouts.app')
+
 @foreach( $compans as $comp)
 
 @section('title' ,'Details For : ' . $comp->name)
@@ -14,9 +15,8 @@
             <div class="card-body">
                 <h4 class="card-title">Name</h4>
                 <p class="card-text">{{$comp->name}}.</p>
-                <a href="/company/{{ $comp->id }}/edit"><button class="btn btn-warning">Edit</button></a>
-
-                <form action="/company/{{ $comp->id }}" method="POST">
+                <a href="/company/{{ $comp->id }}/edit" style="display:inline-block;"><button class="btn btn-warning">Edit</button></a>
+                <form action="/company/{{ $comp->id }}" method="POST" style="display:inline-block;">
                     @method('DELETE')
                     @csrf
                     <button type="submit" class="btn btn-danger"> Delete</button>

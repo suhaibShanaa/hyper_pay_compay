@@ -1,13 +1,13 @@
 
 <label for="name">Name : </label>
 <div class="input-group"  class="pb-2">
-    <input type="text" name="name" value="{{ old('name') ?? $prod->name }}  " class="form-control">
+    <input type="text" name="name" value="{{ old('name') ?? $product->name }}  " class="form-control">
     <div>{{$errors->first('name')}}</div>
 </div>
 
 <label for="category">Category : </label>
 <div class="input-group" class="pb-2">
-    <input type="text" name="category" value="{{ old('category') ?? $prod->category }}"  class="form-control">
+    <input type="text" name="category" value="{{ old('category') ?? $product->category }}"  class="form-control">
     <div>{{$errors->first('category')}}</div>
 </div>
 

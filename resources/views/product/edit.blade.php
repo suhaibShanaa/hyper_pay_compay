@@ -1,19 +1,20 @@
-@extends('layout')
+@extends('layouts.app')
 
-    @section('title' ,'Edit Detail For' . $products->name)
+
+@section('title' ,'Edit Detail For' . $product->name)
 
 @section('content')
 
     <div class="row">
         <div class="container">
-            <div class="card text-white  bg-info mb-3" style="max-width: 70rem;">
+            <div class="card text-white  bg-primary mb-3" style="max-width: 70rem;">
 
                 <div class="row">
                     <div class="col-12">
                         <div class="card-body">
-        <h1 class="py-3">Edit Details For {{ $products->name }} </h1>
+        <h1 class="py-3">Edit Details For {{ $product->name }} </h1>
 
-            <form action={{ URL::to('product/'.$products->id) }} method="POST" enctype="multipart/form-data">
+            <form action={{ URL::to('product/'.$product->id) }} method="POST" enctype="multipart/form-data">
                 @method('PUT')
                 @include('product.form')
                 <button type="submit" class="btn btn-success" > Edit Customers</button>

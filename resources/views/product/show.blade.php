@@ -1,5 +1,6 @@
-@extends('layout')
-@foreach( $products as $prod)
+@extends('layouts.app')
+
+@foreach( $product as $prod)
 
     @section('title' ,'Details For : ' . $prod->name)
 
@@ -14,18 +15,19 @@
 
 
         <p><strong>Name</strong>  {{$prod->name}}</p>
-        <td> @if($prod->image)
+        <td>  @if($prod->image)
                 <div class="col-sm-2"><img src="{{ asset('storage/'. $prod->image) }}" alt="" class="img-thumbnail">
                 </div>
             @endif
         </td>
+                        <br>
 
-                        <a href="/company/{{ $prod->id }}/edit"><button class="btn btn-warning">Edit</button></a>
+                        <a href="/product/{{ $prod->id }}/edit" style="display:inline-block;"><button class="btn btn-warning">Edit</button></a>
                         {{--        for delete--}}
-                        <form action="/company/{{ $prod->id }}" method="POST">
+                        <form action="/product/{{ $prod->id }}" method="POST" style="display:inline-block;" >
                             @method('DELETE')
                             @csrf
-                            <button type="submit" class="btn btn-danger"> Delete</button>
+                            <button type="submit" class="btn btn-danger" > Delete</button>
                         </form>
                     </div>
                 </div>

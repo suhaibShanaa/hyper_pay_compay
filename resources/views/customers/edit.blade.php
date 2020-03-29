@@ -1,11 +1,12 @@
-@extends('layout')
+@extends('layouts.app')
 
-    @section('title' ,'Edit Detail For' . $customer->name)
+
+@section('title' ,'Edit Detail For' . $customer->name)
 
 @section('content')
 
     <div class="container">
-        <div class="card text-white  bg-info mb-3" style="max-width: 70rem;">
+        <div class="card text-white  bg-primary mb-3" style="max-width: 70rem;">
 
             <div class="row">
                 <div class="col-12">

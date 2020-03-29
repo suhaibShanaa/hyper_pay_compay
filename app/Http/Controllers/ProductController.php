@@ -2,35 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Company;
 use App\Product;
-use App\Events\NewCustomerHasRegisterdEvent;
-use App\Mail\WelcomeNewUserMail;
-use App\Mail\WelcomeNewUserMail1;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use Intervention\Image\Image;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
     public function __construct()
     {
         $this->middleware('auth')->except(['index']); //to skip index
     }
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         //
-//        $products = Product::all();
+;
         $products= Product::orderBy('created_at','desc')->get();
-
-        return view('product.index', ['products' => $products]);
+        return view('product.index' ,compact('products'));
     }
 
     /**
@@ -41,22 +33,20 @@ class ProductController extends Controller
     public function create()
     {
         //
-
-        $products = Product::all();
-        $prod = new Product();
-        return view('product.create', compact('products','prod'));
-
+        $products =Product::all();
+        $product = new Product();
+        return view('product.create' ,compact('products' , 'product'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $this->authorize('create' , Product::class);
+        //
 
         $request->input('product');
         $product = Product::create($this->validateRequest());
@@ -65,97 +55,93 @@ class ProductController extends Controller
 
 
         return redirect('product/index');
-
-
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param \App\Product $products
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $products)
+    public function show(Product $product)
     {
         //
+        $product = Product::find($product);
 
-        $products = Product::find($products);
-        return view('product.show', compact('products'));
-
+        return view('product.show' , compact('product'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Product $products
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $products)
+    public function edit(Product $product)
     {
         //
+        $products  =    Product::all();
 
-        return view('product.edit', $products);
+        return view('product.edit' ,compact('product','products'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Product $products
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Product $products)
+    public function update(Request $request, Product $product)
     {
+        //
+        $product->update($this->validateRequest());
+        $this->storeImage($product);
 
-        $this->authorize('update' , Product::class);
+        $product->save();
 
-        $products->update($this->validateRequest());
-        $this->storeImage($products);
 
-        $products->request()->input('product');
-
-        return redirect('product/' . $products->id);
-
+        return redirect('product/'.$product->id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Product $products
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $products)
+    public function destroy(Product $product)
     {
         //
-        $this->authorize('delete' , Product::class);
-
-        $products->delete();
-        return redirect('product/index');
-
+        $product->delete();
+        return  redirect('product/index');
     }
+
 
     private function validateRequest()
     {
         return request()->validate([
             'name' => 'required|min:2',
-            'category' => '',
-            'image' => 'sometimes|file|image|max:5000',
-
+            'category' => 'required|',
+            'image'=> 'sometimes|file|image|max:5000',
         ]);
 
 
     }
 
-    private function storeImage(Product $products)
+    private function storeImage(Product $product)
     {
-        if (request()->has('image')) {
-            $products->update([
-                'image' => request()->image->store('uploads', 'public'),
+        if (request()->has('image')){
+            $product->update([
+                'image' =>request()->image->store('uploads', 'public'),
             ]);
 
-            $image = \Intervention\Image\Facades\Image::make(public_path('storage/' . $products->image))->fit(300, 300, null, 'center');
+            $image =\Intervention\Image\Facades\Image::make(public_path('storage/' . $product->image))->fit(300,300 , null , 'center');
             $image->save();
         }
     }
+
 }
+
+
+

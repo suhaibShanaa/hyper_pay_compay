@@ -1,4 +1,5 @@
-@extends('layout')
+@extends('layouts.app')
+
 @foreach( $customer as $cust)
 
 @section('title' ,'Details For' . $cust->name)
@@ -28,8 +29,8 @@
         @endif
         @endforeach
 
-                    <a href="/customers/{{ $cust->id }}/edit"><button class="btn btn-warning">Edit</button></a>
-                    <form action="/customers/{{ $cust->id }}" method="POST">
+                    <a href="/customers/{{ $cust->id }}/edit" style="display:inline-block;"><button class="btn btn-warning">Edit</button></a>
+                    <form action="/customers/{{ $cust->id }}" method="POST" style="display:inline-block;">
                         @method('DELETE')
                         @csrf
                         <button type="submit" class="btn btn-danger"> Delete</button>

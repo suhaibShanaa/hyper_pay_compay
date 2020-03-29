@@ -1,4 +1,5 @@
-@extends('layout')
+@extends('layouts.app')
+
 
 @section('title')
     Add New Customers
@@ -8,7 +9,7 @@
 @section('content')
     <div class="row">
         <div class="container">
-            <div class="card text-white  bg-info mb-3" style="max-width: 70rem;">
+            <div class="card text-white  bg-success mb-3" style="max-width: 70rem;">
 
                 <div class="row">
                     <div class="col-12">
