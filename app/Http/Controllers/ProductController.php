@@ -54,7 +54,7 @@ class ProductController extends Controller
         $product->save();
 
 
-        return redirect('product/index');
+        return redirect('product/index')->with('success' , 'Done Successfully');
     }
 
     /**
@@ -101,7 +101,7 @@ class ProductController extends Controller
         $product->save();
 
 
-        return redirect('product/'.$product->id);
+        return redirect('product/'.$product->id)->with('success' , 'Done Successfully Updated');
     }
 
     /**
@@ -114,7 +114,7 @@ class ProductController extends Controller
     {
         //
         $product->delete();
-        return  redirect('product/index');
+        return  redirect('product/index')->with('success' , 'Done Successfully Deleted');
     }
 
 

@@ -25,18 +25,30 @@
 </head>
 
 <body>
-
 @include('navs')
 <div class="container">
 
     {{--    for message session --}}
-    @if(session()->has('message'))
+@if(session()->has('message'))
         <div class="alert alert-success" role="alert">
             <strong>Success</strong> {{ session()->get('message') }}
         </div>
     @endif
 
+    @include('includes.message')
     @yield('content')
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script>
+        CKEDITOR.replace( 'summary-ckeditor' );
+    </script>
+
+    <script>
+        CKEDITOR.replace( 'summary-ckeditor', {
+            filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
+        });
+    </script>
+
 </div>
 
 </body>

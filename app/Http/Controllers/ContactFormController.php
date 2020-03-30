@@ -42,14 +42,14 @@ class ContactFormController extends Controller
         $data = request()->validate([
             'name' => 'required' ,
             'email' => 'required|email',
-            'message' => 'required',
+            'summary-ckeditor' => 'required',
         ]);
 
         //send email
 
         Mail::to('suhaibsh612@gmail.com')->send(new ContactFormMail($data));
 
-        return redirect('/contact/create')->with('message', 'Thanks for message');
+        return redirect('/contact/create')->with('success' , 'Done Successfully ');
 
     }
 
@@ -97,5 +97,33 @@ class ContactFormController extends Controller
     public function destroy(ContactForm $contactForm)
     {
         //
+    }
+    public function upload(Request $request)
+    {
+        if ($request->hasFile('upload')) {
+            //get filename with extension
+            $filenamewithextension = $request->file('upload')->getClientOriginalName();
+
+            //get filename without extension
+            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+
+            //get file extension
+            $extension = $request->file('upload')->getClientOriginalExtension();
+
+            //filename to store
+            $filenametostore = $filename . '_' . time() . '.' . $extension;
+
+            //Upload File
+            $request->file('upload')->storeAs('public/uploads', $filenametostore);
+
+            $CKEditorFuncNum = $request->input('CKEditorFuncNum');
+            $url = asset('storage/uploads/' . $filenametostore);
+            $msg = 'Image successfully uploaded';
+            $re = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
+
+            // Render HTML output
+            @header('Content-type: text/html; charset=utf-8');
+            echo $re;
+        }
     }
 }

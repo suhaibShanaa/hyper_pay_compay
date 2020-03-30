@@ -55,6 +55,7 @@ Route::get( '/status' , 'PaymentController@status' );
 // For Contact
 Route::get('contact/create','ContactFormController@create')->middleware('auth');
 Route::post('contact','ContactFormController@store')->name('contact.store')->middleware('auth');
+Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
 // For About
 Route::view('about' , 'about')->middleware('test');
 ////For Customer

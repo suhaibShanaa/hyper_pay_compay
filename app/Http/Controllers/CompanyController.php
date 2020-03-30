@@ -59,7 +59,7 @@ class CompanyController extends Controller
         $company->name =request('name');
 
         $company->save();
-        return redirect('company/index');
+        return redirect('company/index')->with('success' , 'Done Successfully');
 
     }
 
@@ -101,11 +101,9 @@ class CompanyController extends Controller
         $this->authorize('update' , Company::class);
 
         $company->update(request()->post());
-//
-        return redirect('company/'.$company->id);
 
+        return redirect('company/'.$company->id)->with('success' , 'Done Successfully Updated');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -117,7 +115,7 @@ class CompanyController extends Controller
 
         $this->authorize('delete',$company);
         $company->delete();
-        return  redirect('company/index');
+        return  redirect('company/index')->with('success' , 'Done Successfully Deleted');
 
     }
 }

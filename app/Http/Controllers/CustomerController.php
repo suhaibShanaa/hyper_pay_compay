@@ -74,7 +74,7 @@ class CustomerController extends Controller
 
 //        //message Mail
         event(new NewCustomerHasRegisterdEvent($customer));
-        return redirect('customers/index');
+        return redirect('customers/index')->with('success' , 'Done Successfully');
 
     }
 
@@ -124,7 +124,7 @@ class CustomerController extends Controller
         $customer->Company()->sync(request()->input('company_s'));
         $customer->Product()->sync(request()->input('product_s'));
 
-        return redirect('customers/'.$customer->id);
+        return redirect('customers/'.$customer->id)->with('success' , 'Done Successfully Updated');
 
     }
 
@@ -140,7 +140,7 @@ class CustomerController extends Controller
 //        $this->authorize('delete',$customer);
 
         $customer->delete();
-        return  redirect('customers/index');
+        return  redirect('customers/index')->with('success' , 'Done Successfully Deleted');
 
     }
 

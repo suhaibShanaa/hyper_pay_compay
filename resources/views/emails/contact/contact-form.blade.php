@@ -2,10 +2,11 @@
 # Thank you for your message
 
 
-    <strong>Name</strong>{{$data['name'] }}
-    <strong>Email</strong>{{$data['email'] }}
+    Name  : {!!$data['name']!!}
+    Email : {!!$data['email']!!}
 
-    <strong>Message</strong>
+    Message : {!!$data['summary-ckeditor']!!}
 
-    {{$data['message']}}
+
 @endcomponent
+
