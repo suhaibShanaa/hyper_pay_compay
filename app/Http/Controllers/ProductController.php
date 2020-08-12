@@ -137,6 +137,8 @@ class ProductController extends Controller
             ]);
 
             $image =\Intervention\Image\Facades\Image::make(public_path('storage/' . $product->image))->fit(300,300 , null , 'center');
+//            $image = \Intervention\Image\Facades\Image::make($product->file('image')->getRealPath());
+
             $image->save();
         }
     }
